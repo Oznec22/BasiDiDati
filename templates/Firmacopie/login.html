@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login - Fiera Fumetti</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #3a3050);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6e00, #ff5722);
+            color: white;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(255, 87, 34, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .home-button:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+            box-shadow: 0 8px 30px rgba(230, 74, 25, 0.9);
+            transform: scale(1.05);
+        }
+
+        .login-container {
+            background: rgba(255, 87, 34, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 87, 34, 0.3);
+            padding: 40px 50px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.8rem;
+            color: #ff6e00;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #ff5722;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-align: left;
+            display: block;
+            color: #ffd8b1;
+            text-shadow: 0 0 8px rgba(255, 87, 34, 0.7);
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 87, 34, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            box-shadow: 0 0 25px #ff6e00;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Modifica estetica per il campo nome utente */
+        input[name="username"] {
+            padding: 14px 20px;
+            border-radius: 25px;
+            border: 2px solid #ff6e00;
+            font-size: 1.1rem;
+            font-weight: 600;
+            outline: none;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            box-shadow: 0 0 20px #ff6e00;
+            transition: all 0.3s ease;
+        }
+
+        input[name="username"]::placeholder {
+            color: #ffbd72;
+            font-weight: 400;
+        }
+
+        input[name="username"]:focus {
+            background: rgba(255, 110, 0, 0.2);
+            border-color: #ff5722;
+            box-shadow: 0 0 30px #ff5722;
+            color: #fff;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(45deg, #ff6e00, #ff5722);
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 12px 0;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255, 87, 34, 0.8);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            user-select: none;
+        }
+
+        button[type="submit"]:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+            box-shadow: 0 12px 40px rgba(230, 74, 25, 0.9);
+            transform: scale(1.05);
+        }
+
+        .links {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #ffd8b1;
+            text-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
+        }
+
+        .links a {
+            color: #ff6e00;
+            text-decoration: none;
+            font-weight: 700;
+            margin-left: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'index' %}" class="home-button">Home</a>
+
+    <main class="login-container" role="main" aria-labelledby="login-title">
+        <h1 id="login-title">Login</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Accedi</button>
+        </form>
+
+        <p class="links">
+            Non hai un account?
+            <a href="{% url 'register' %}">Registrati qui</a>
+        </p>
+    </main>
+</body>
+</html>

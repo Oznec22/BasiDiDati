@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalogo Prodotti - Comicon 2026</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header>
+    <h1>🛍️ Prodotti e Fumetti</h1>
+    <a href="{% url 'home' %}" class="button">Torna all'area utente</a>
+</header>
+
+<main>
+    <div class="grid">
+        {% for prodotto in prodotti %}
+        <div class="card">
+            <h3>{{ prodotto.titolo }}</h3>
+            <p><strong>Genere:</strong> {{ prodotto.genere }}</p>
+            <p><strong>Prezzo:</strong> €{{ prodotto.prezzo }}</p>
+            <a href="{% url 'dettaglio_prodotto' prodotto.id %}" class="button">Dettagli</a>
+        </div>
+        {% empty %}
+            <p>Nessun prodotto disponibile.</p>
+        {% endfor %}
+    </div>
+</main>
+</body>
+</html>

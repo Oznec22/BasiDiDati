@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Titolo Pagina</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #3a3050);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .container {
+            background: rgba(255, 87, 34, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 87, 34, 0.3);
+            padding: 40px 50px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-weight: 800;
+            font-size: 2.4rem;
+            color: #ff6e00;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #ff5722;
+        }
+        p {
+            font-size: 1rem;
+            color: #ffd8b1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px rgba(255, 87, 34, 0.7);
+        }
+        a.button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6e00, #ff5722);
+            color: white;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 8px 30px rgba(255, 87, 34, 0.8);
+            transition: all 0.3s ease;
+        }
+        a.button:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+            box-shadow: 0 12px 40px rgba(230, 74, 25, 0.9);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Titolo della Pagina</h1>
+    <p>Contenuto testuale o introduttivo qui.</p>
+    <a href="#" class="button">Torna indietro</a>
+</div>
+
+</body>
+</html>

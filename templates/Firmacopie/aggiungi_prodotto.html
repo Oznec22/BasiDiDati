@@ -1,0 +1,59 @@
+
+{% load static %}
+
+{% block title %}Aggiungi Prodotto{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+
+    <h2 style="
+        font-weight: 800;
+        font-size: 2.5rem;
+        color: #ff6e00;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px #ff5722;
+        text-align: center;
+    ">
+        Aggiungi un nuovo prodotto
+    </h2>
+
+    <form method="post" style="display: flex; flex-direction: column; gap: 20px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" style="
+            background: linear-gradient(45deg, #ff6e00, #ff5722);
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 12px 0;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255, 87, 34, 0.8);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        ">
+            Aggiungi
+        </button>
+    </form>
+
+    <a href="{% url 'dashboard_casa_editrice' %}" style="
+        display: inline-block;
+        margin-top: 30px;
+        background: linear-gradient(45deg, #ff6e00, #ff5722);
+        color: white;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(255, 87, 34, 0.6);
+        transition: all 0.3s ease;
+        text-align: center;
+    " onmouseover="this.style.background='linear-gradient(45deg, #ff5722, #e64a19)'; this.style.boxShadow='0 8px 30px rgba(230, 74, 25, 0.9)'; this.style.transform='scale(1.05)';"
+       onmouseout="this.style.background='linear-gradient(45deg, #ff6e00, #ff5722)'; this.style.boxShadow='0 4px 20px rgba(255, 87, 34, 0.6)'; this.style.transform='scale(1)';">
+        Torna alla Home
+    </a>
+
+</div>
+{% endblock %}

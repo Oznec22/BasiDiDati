@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Prenota Firmacopie - Comicon 2026</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #3a3050);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header, main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        h1 {
+            color: #ff6e00;
+            text-shadow: 0 0 15px #ff5722;
+        }
+        .button {
+            background: linear-gradient(45deg, #ff6e00, #ff5722);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
+        }
+        .evento {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(255, 110, 0, 0.3);
+        }
+        .evento-info {
+            max-width: 75%;
+        }
+        .evento-info strong {
+            color: #ffd8b1;
+            font-size: 1.1rem;
+        }
+        .evento-info span {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.9rem;
+            color: #ffb74d;
+        }
+        form {
+            margin: 0;
+        }
+        p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Prenota il tuo firmacopie</h1>
+    <a href="{% url 'home' %}" class="button">Torna all'area utente</a>
+</header>
+
+<main>
+    <div class="card">
+        <h2>Eventi disponibili</h2>
+        {% if eventi %}
+            {% for evento in eventi %}
+            <div class="evento">
+                <div class="evento-info">
+                    <strong>{{ evento.fumetto.titolo }}</strong> con {{ evento.autore.nome }} {{ evento.autore.cognome }}
+                    <span>il {{ evento.data }} ore {{ evento.ora }} presso padiglione {{ evento.stand.padiglione }} stand {{ evento.stand.numero }}</span>
+                </div>
+                <form action="{% url 'prenota_evento' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="evento_id" value="{{ evento.id }}">
+                    <button type="submit" class="button">Prenota</button>
+                </form>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Nessun evento disponibile al momento.</p>
+        {% endif %}
+    </div>
+</main>
+</body>
+</html>

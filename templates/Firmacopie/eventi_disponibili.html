@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1f1c2c, #3a3050);
+        color: #fff;
+        padding: 40px 20px;
+    }
+
+    h1 {
+        font-weight: 800;
+        font-size: 2.4rem;
+        color: #ff6e00;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px #ff5722;
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto 40px;
+        max-width: 1000px;
+        background: rgba(255, 87, 34, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255, 87, 34, 0.4);
+    }
+
+    th, td {
+        padding: 14px 20px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 87, 34, 0.3);
+    }
+
+    th {
+        background: rgba(255, 87, 34, 0.25);
+        color: #ffd8b1;
+        text-shadow: 0 0 8px rgba(255, 87, 34, 0.7);
+        font-size: 1.1rem;
+    }
+
+    td {
+        color: #fff;
+        font-weight: 500;
+    }
+
+    a.button {
+        display: inline-block;
+        background: linear-gradient(45deg, #ff6e00, #ff5722);
+        color: white;
+        font-weight: 600;
+        padding: 10px 16px;
+        border-radius: 25px;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(255, 87, 34, 0.6);
+        transition: all 0.3s ease;
+    }
+
+    a.button:hover {
+        background: linear-gradient(45deg, #ff5722, #e64a19);
+        box-shadow: 0 8px 30px rgba(230, 74, 25, 0.9);
+        transform: scale(1.05);
+    }
+</style>
+
+<h1>Eventi disponibili per prenotazione</h1>
+
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Ora</th>
+        <th>Autore</th>
+        <th>Stand</th>
+        <th>Azione</th>
+    </tr>
+    {% for evento in eventi %}
+    <tr>
+        <td>{{ evento.data }}</td>
+        <td>{{ evento.ora }}</td>
+        <td>{{ evento.autore }}</td>
+        <td>{{ evento.stand }}</td>
+        <td><a href="{% url 'iscrivi_autore' evento.id %}" class="button">Iscrivi autore</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

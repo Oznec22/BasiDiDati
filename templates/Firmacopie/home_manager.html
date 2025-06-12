@@ -1,0 +1,43 @@
+<h1>Ciao {{ request.user.get_full_name }}</h1>
+
+<h2>Ruolo: Manager</h2>
+
+{% if autore %}
+<h2>Info Autore (se sei anche autore)</h2>
+<p>{{ autore.bio }}</p>
+
+<h2>Fumetto di punta</h2>
+{% if fumetto_punta %}
+  <p>Titolo: {{ fumetto_punta.titolo }}</p>
+  <a href="{% url 'modifica_fumetto_punta' %}">Modifica</a>
+{% else %}
+  <a href="{% url 'modifica_fumetto_punta' %}">Aggiungi fumetto</a>
+{% endif %}
+{% endif %}
+
+{% if prodotti %}
+<h2>Gestione Prodotti</h2>
+<a href="{% url 'lista_prodotti' %}">Vedi tutti i prodotti ({{ prodotti.count }})</a>
+{% endif %}
+
+<h2>Prenotazioni</h2>
+<p>Totale prenotazioni: {{ numero_posti_prenotati }}</p>
+<a href="{% url 'prenotazioni' %}">Vedi dettagli</a>
+
+<!-- management/home_manager.html -->
+<h2>Gestione Eventi</h2>
+<p>Hai organizzato {{ num_eventi }} eventi</p>
+<a href="{% url 'crea_evento' %}" class="btn btn-success">Crea nuovo evento</a>
+<a href="{% url 'lista_eventi_manager' %}" class="btn btn-primary">Vedi tutti gli eventi</a>
+
+<h3>Prossimi eventi</h3>
+<ul>
+{% for evento in eventi_prossimi %}
+    <li>
+        {{ evento.data }} - {{ evento.autore.user.get_full_name }}
+        <a href="{% url 'modifica_evento' evento.pk %}">Modifica</a>
+    </li>
+{% empty %}
+    <li>Nessun evento programmato</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Prenotazione Fallita - Comicon 2026</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #d9534f;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ff6e00;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        a:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+    <h1>😢 Spiacenti, posti esauriti per questo evento.</h1>
+    <a href="{% url 'lista_firmacopie' %}">🔙 Torna agli eventi</a>
+</body>
+</html>

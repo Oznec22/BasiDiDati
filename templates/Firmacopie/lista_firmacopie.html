@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventi Firmacopie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #3a3050);
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.2rem;
+            color: #ff6e00;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 12px #ff5722;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        li {
+            background: rgba(255, 87, 34, 0.08);
+            margin-bottom: 16px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.25);
+        }
+
+        a.button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6e00, #ff5722);
+            color: white;
+            font-weight: 600;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(255, 87, 34, 0.6);
+            transition: all 0.3s ease;
+            margin-left: 15px;
+        }
+
+        a.button:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+            box-shadow: 0 8px 30px rgba(230, 74, 25, 0.9);
+            transform: scale(1.05);
+        }
+
+        a.back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #ff8a50;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a.back-link:hover {
+            color: #ffd8b1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📚 Eventi Firmacopie Disponibili</h1>
+
+<ul>
+    {% for evento in eventi %}
+        <li>
+            <strong>Data:</strong> {{ evento.data }}<br>
+            <strong>Ora:</strong> {{ evento.ora }}<br>
+            <strong>Stand:</strong> {{ evento.stand.padiglione }}<br>
+            <strong>Posti disponibili:</strong> {{ evento.posti_disponibili }}
+            <a href="{% url 'prenota_firmacopie' evento.pk %}" class="button">Prenota</a>
+        </li>
+    {% empty %}
+        <li>Nessun evento disponibile.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'index' %}" class="back-link">⬅ Torna alla home</a>
+
+</body>
+</html>

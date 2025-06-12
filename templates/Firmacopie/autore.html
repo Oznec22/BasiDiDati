@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto; padding: 0 20px; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #1f1c2c, #3a3050); color: #fff; border-radius: 20px; box-shadow: 0 0 30px rgba(255, 87, 34, 0.4);">
+  
+  <h1 style="font-weight: 800; font-size: 2.8rem; color: #ff6e00; margin-bottom: 30px; text-align: center; text-shadow: 0 0 20px #ff5722;">
+    Autori
+  </h1>
+
+  <a href="{% url 'dashboard_casa_editrice' %}" style="display: inline-block; background: linear-gradient(45deg, #ff6e00, #ff5722); color: white; font-weight: 700; padding: 12px 25px; border-radius: 30px; text-decoration: none; box-shadow: 0 8px 30px rgba(255, 87, 34, 0.8); transition: all 0.3s ease; user-select: none; margin-bottom: 30px;">
+    Torna alla Dashboard
+  </a>
+
+  {% if autori %}
+    <ul style="list-style: none; padding: 0;">
+      {% for autore in autori %}
+        <li style="background: rgba(255, 87, 34, 0.15); margin-bottom: 20px; border-radius: 16px; padding: 20px; box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);">
+          <h2 style="font-weight: 700; font-size: 1.8rem; color: #ff6e00; margin-bottom: 10px; text-shadow: 0 0 10px #ff5722;">
+            {{ autore.nome }}
+          </h2>
+          {% if autore.biografia %}
+            <p style="font-weight: 500; font-size: 1rem; color: #ffd8b1; line-height: 1.5;">
+              {{ autore.biografia }}
+            </p>
+          {% else %}
+            <p style="font-style: italic; color: #ff8a50;">Nessuna biografia disponibile.</p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="text-align: center; font-style: italic; color: #ff8a50; margin-top: 20px;">
+      Nessun autore disponibile.
+    </p>
+  {% endif %}
+</div>
+{% endblock %}

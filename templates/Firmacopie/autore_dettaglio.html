@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ autore.nome }} {{ autore.cognome }} - Comicon 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #3a3050);
+            color: #fff;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-weight: 800;
+            font-size: 3rem;
+            color: #ff6e00;
+            text-shadow: 0 0 20px #ff5722;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ff6e00, #ff5722);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 30px rgba(255, 87, 34, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+            box-shadow: 0 12px 40px rgba(230, 74, 25, 0.9);
+            transform: scale(1.05);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 87, 34, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 87, 34, 0.3);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            color: #ffbd72;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #ffd8b1;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>{{ autore.nome }} {{ autore.cognome }}</h1>
+    <a href="{% url 'catalogo_autori' %}" class="button">Torna al catalogo autori</a>
+</header>
+
+<main>
+    <div class="card">
+        <h2>Biografia</h2>
+        <p>{{ autore.biografia }}</p>
+    </div>
+</main>
+
+</body>
+</html>

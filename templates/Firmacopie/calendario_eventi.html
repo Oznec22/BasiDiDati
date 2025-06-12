@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <title>Calendario Eventi - {{ casa_editrice.nome }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #3a3050);
+            color: #fff;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.6rem;
+            color: #ff6e00;
+            text-shadow: 0 0 20px #ff5722;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .evento {
+            background: rgba(255, 87, 34, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px rgba(255, 87, 34, 0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .evento:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 35px rgba(255, 87, 34, 0.35);
+        }
+
+        .data-evento {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #ffd8b1;
+            text-shadow: 0 0 8px rgba(255, 87, 34, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .descrizione-evento {
+            font-size: 1.05rem;
+            color: #fff;
+        }
+
+        .no-eventi {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #ffd8b1;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            background: linear-gradient(45deg, #ff6e00, #ff5722);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(255, 87, 34, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+            box-shadow: 0 12px 40px rgba(230, 74, 25, 0.9);
+            transform: scale(1.05);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Eventi per {{ casa_editrice.nome }}</h1>
+
+        {% if eventi %}
+            {% for evento in eventi %}
+                <div class="evento">
+                    <div class="data-evento">{{ evento.data|date:"d/m/Y" }}</div>
+                    <div class="descrizione-evento">{{ evento.descrizione }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-eventi">Non ci sono eventi programmati al momento.</p>
+        {% endif %}
+
+        <div style="text-align:center;">
+            <a href="{% url 'dashboard_casa_editrice' %}">Torna alla home</a>
+        </div>
+    </main>
+</body>
+</html>

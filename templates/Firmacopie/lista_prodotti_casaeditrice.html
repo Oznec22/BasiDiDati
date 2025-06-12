@@ -1,0 +1,78 @@
+
+
+{% block content %}
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #3a3050);
+      color: #fff;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #ff6e00, #ff5722);
+      color: white;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(255, 87, 34, 0.6);
+      transition: all 0.3s ease;
+      user-select: none;
+      z-index: 1000;
+    }
+    .home-button:hover {
+      background: linear-gradient(45deg, #ff5722, #e64a19);
+      box-shadow: 0 8px 30px rgba(230, 74, 25, 0.9);
+      transform: scale(1.05);
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      color: #ff6e00;
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 0 0 12px #ff5722;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    li {
+      background: rgba(255, 87, 34, 0.08);
+      margin-bottom: 16px;
+      padding: 18px 22px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(255, 87, 34, 0.2);
+      font-size: 1.1rem;
+    }
+
+    .empty {
+      text-align: center;
+      color: #ff8a50;
+      font-style: italic;
+      margin-top: 20px;
+    }
+  </style>
+
+  <a href="{% url 'dashboard_casa_editrice' %}" class="home-button">Home</a>
+
+  <h2>📚 Prodotti della Casa Editrice</h2>
+  <ul>
+    {% for prodotto in prodotti %}
+      <li><strong>{{ prodotto.nome }}</strong> — {{ prodotto.prezzo }}€</li>
+    {% empty %}
+      <li class="empty">Nessun prodotto disponibile.</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

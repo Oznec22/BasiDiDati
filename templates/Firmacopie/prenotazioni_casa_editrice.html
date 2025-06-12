@@ -1,0 +1,49 @@
+{% block content %}
+<div style="background: linear-gradient(135deg, #1f1c2c, #3a3050); min-height: 100vh; padding: 40px 20px; font-family: 'Poppins', sans-serif; color: #fff;">
+
+  <div style="max-width: 960px; margin: 0 auto;">
+
+    <h1 style="font-weight: 800; font-size: 2.8rem; color: #ff6e00; margin-bottom: 30px; text-shadow: 0 0 20px #ff5722; text-align: center;">
+      Prenotazioni per la casa editrice: {{ casa_editrice.nome }}
+    </h1>
+
+    <a href="{% url 'dashboard_casa_editrice' %}"
+       style="display: inline-block; background: linear-gradient(45deg, #ff6e00, #ff5722); 
+              color: white; font-weight: 700; padding: 12px 24px; border-radius: 30px; 
+              text-decoration: none; box-shadow: 0 8px 30px rgba(255, 87, 34, 0.8); 
+              margin-bottom: 30px; user-select: none; transition: background 0.3s ease, box-shadow 0.3s ease;">
+      Torna alla Home
+    </a>
+
+    {% if prenotazioni %}
+      <table style="width: 100%; border-collapse: collapse; background: rgba(255, 87, 34, 0.1); border-radius: 15px; overflow: hidden; box-shadow: 0 0 25px rgba(255, 87, 34, 0.25);">
+        <thead style="background: #ff6e00; color: #fff; text-shadow: 0 0 8px #ff5722;">
+          <tr>
+            <th style="padding: 12px 15px; text-align: left;">Utente</th>
+            <th style="padding: 12px 15px; text-align: left;">Evento Firmacopie</th>
+            <th style="padding: 12px 15px; text-align: left;">Data Evento</th>
+            <th style="padding: 12px 15px; text-align: left;">Ora Evento</th>
+            <th style="padding: 12px 15px; text-align: left;">Data Prenotazione</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for prenotazione in prenotazioni %}
+            <tr style="border-bottom: 1px solid rgba(255, 87, 34, 0.3);">
+              <td style="padding: 12px 15px;">{{ prenotazione.utente.username }}</td>
+              <td style="padding: 12px 15px;">{{ prenotazione.firmacopie }}</td>
+              <td style="padding: 12px 15px;">{{ prenotazione.firmacopie.data|date:"d/m/Y" }}</td>
+              <td style="padding: 12px 15px;">{{ prenotazione.firmacopie.ora }}</td>
+              <td style="padding: 12px 15px;">{{ prenotazione.data_prenotazione|date:"d/m/Y H:i" }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p style="text-align: center; color: #ff8a50; font-style: italic; margin-top: 30px;">
+        Nessuna prenotazione trovata.
+      </p>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

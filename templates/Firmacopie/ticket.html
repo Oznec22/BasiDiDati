@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Firmacopie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9fb;
+            color: #333;
+        }
+        h1 {
+            color: #28a745;
+        }
+        p {
+            font-size: 1.1em;
+            margin: 8px 0;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ticket prenotato con successo!</h1>
+    <p><strong>Utente:</strong> {{ utente.username }}</p>
+    <p><strong>Evento:</strong> {{ evento }}</p>
+    <p><strong>Data:</strong> {{ evento.data }}</p>
+    <p><strong>Ora:</strong> {{ evento.ora }}</p>
+    <p><strong>Stand:</strong> {{ evento.stand.padiglione }}</p>
+    <a href="{% url 'index' %}">Torna alla home</a>
+</body>
+</html>

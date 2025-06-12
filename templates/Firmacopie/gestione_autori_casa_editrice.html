@@ -1,0 +1,94 @@
+{% block content %}
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1f1c2c, #3a3050);
+        color: #fff;
+        padding: 40px 20px;
+    }
+
+    h2 {
+        font-weight: 800;
+        font-size: 2rem;
+        color: #ff6e00;
+        margin-bottom: 25px;
+        text-shadow: 0 0 15px #ff5722;
+        text-align: center;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        background: rgba(255, 87, 34, 0.08);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
+    }
+
+    form p {
+        margin-bottom: 20px;
+    }
+
+    form label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #ffd8b1;
+    }
+
+    form input, form select, form textarea {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        margin-top: 5px;
+    }
+
+    button {
+        display: inline-block;
+        background: linear-gradient(45deg, #ff6e00, #ff5722);
+        color: white;
+        font-weight: 600;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 30px;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(255, 87, 34, 0.6);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: linear-gradient(45deg, #ff5722, #e64a19);
+        box-shadow: 0 8px 30px rgba(230, 74, 25, 0.9);
+        transform: scale(1.05);
+    }
+
+    a.back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #ff8a50;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a.back-link:hover {
+        color: #ffd8b1;
+    }
+</style>
+
+<h2>Gestisci Autori</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salva</button>
+</form>
+
+<a href="{% url 'dashboard_casa_editrice' %}" class="back-link">⬅ Torna alla Home</a>
+
+{% endblock %}

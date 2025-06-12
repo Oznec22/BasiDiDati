@@ -1,0 +1,22 @@
+
+
+{% block content %}
+  <h1>Benvenuto, {{ casa_editrice.nome }}!</h1>
+
+  <div class="dashboard-stats">
+    <p><strong>Numero Autori:</strong> {{ autori_count }}</p>
+    <p><strong>Numero Prodotti:</strong> {{ prodotti_count }}</p>
+    <p><strong>Numero Eventi Firmacopie:</strong> {{ eventi_count }}</p>
+  </div>
+
+  <div class="dashboard-links">
+    <ul>
+      <li><a href="{% url 'aggiungi_prodotto_casaeditrice' %}">Aggiungi Nuovo Prodotto</a></li>
+      <li><a href="{% url 'gestione_autori_casa_editrice' %}">Gestisci Autori</a></li>
+      <li><a href="{% url 'calendario_eventi_casaeditrice' %}">Visualizza Calendario Eventi</a></li>
+      <li><a href="{% url 'visualizza_prenotazioni_casaeditrice' %}">Visualizza Prenotazioni</a></li>
+      <li><a href="{% url 'profilo_casa_editrice' %}">Modifica Profilo Casa Editrice</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+  </div>
+{% endblock %}

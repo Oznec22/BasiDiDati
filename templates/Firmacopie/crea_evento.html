@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-container" style="max-width: 500px; margin: 40px auto; background: rgba(255, 87, 34, 0.15); border-radius: 20px; box-shadow: 0 0 30px rgba(255, 87, 34, 0.3); padding: 40px 50px; color: #fff;">
+    <h1 style="font-weight: 800; font-size: 2.8rem; color: #ff6e00; margin-bottom: 30px; text-shadow: 0 0 20px #ff5722;">Crea un nuovo evento</h1>
+
+    <form method="post" style="display: flex; flex-direction: column; gap: 20px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="background: linear-gradient(45deg, #ff6e00, #ff5722); color: white; font-weight: 700; font-size: 1.2rem; padding: 12px 0; border-radius: 50px; border: none; cursor: pointer; box-shadow: 0 8px 30px rgba(255, 87, 34, 0.8); transition: all 0.3s ease; letter-spacing: 1px; user-select: none;">
+            Salva Evento
+        </button>
+    </form>
+
+    {% if messages %}
+    <ul class="messages" style="margin-top: 20px; list-style: none; padding-left: 0;">
+        {% for message in messages %}
+        <li style="background: rgba(255, 87, 34, 0.2); border-radius: 12px; padding: 10px; margin-bottom: 10px; color: #ffd8b1; text-shadow: 0 0 8px rgba(255, 87, 34, 0.7);">
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

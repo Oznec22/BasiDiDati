@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Prenotazione - Comicon 2026</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9fb;
+            margin: 30px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 1.8em;
+            color: #333;
+        }
+        .button {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 480px;
+            margin: auto;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        .card p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            color: #555;
+        }
+        .card h2 {
+            margin-top: 25px;
+            font-size: 1.5em;
+            color: #222;
+            border-top: 2px solid #007BFF;
+            padding-top: 12px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Il tuo ticket per {{ prenotazione.firmacopie.fumetto.titolo }}</h1>
+    <a href="{% url 'home' %}" class="button">Torna all'area utente</a>
+</header>
+
+<main>
+    <div class="card">
+        <p><strong>Autore:</strong> {{ prenotazione.firmacopie.autore.nome }} {{ prenotazione.firmacopie.autore.cognome }}</p>
+        <p><strong>Data:</strong> {{ prenotazione.firmacopie.data }} ore {{ prenotazione.firmacopie.ora }}</p>
+        <p><strong>Stand:</strong> {{ prenotazione.firmacopie.stand.padiglione }} - {{ prenotazione.firmacopie.stand.numero }}</p>
+        <h2>Codice Prenotazione: {{ prenotazione.id }}</h2>
+        <p style="text-align:center; font-style: italic; color:#777;">Conserva questo codice o stampalo per accedere al firmacopie.</p>
+    </div>
+</main>
+</body>
+</html>
