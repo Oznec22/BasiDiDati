@@ -45,7 +45,7 @@ Per testare le diverse funzionalità del portale in base ai permessi di accesso,
 * **Password:** `comicon!`
 
 ### AUTORE
-* **Username:** `Oda`
+* **Username:** `oda`
 * **Password:** `comicon!`
 
 ### CASA EDITRICE
