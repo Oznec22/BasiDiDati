@@ -36,6 +36,26 @@ Dopo aver partecipato a un evento, l'utente può lasciare una recensione con un 
 Accesso riservato agli amministratori per la gestione dei padiglioni, degli stand e della manutenzione generale del database.
 
 ---
+---
+
+## ACCOUNT DI PROVA
+
+Per testare le diverse funzionalità del portale in base ai permessi di accesso, è possibile utilizzare i seguenti account preconfigurati:
+
+### UTENTE PRIVATO (Fan)
+* **Username:** `mario`
+* **Password:** `comicon!`
+
+### AUTORE
+* **Username:** `Oda`
+* **Password:** `comicon!`
+
+### CASA EDITRICE
+* **Username:** `mondadori`
+* **Password:** `comicon!`
+
+---
+---
 
 ## STRUTTURA DEL PROGETTO
 
